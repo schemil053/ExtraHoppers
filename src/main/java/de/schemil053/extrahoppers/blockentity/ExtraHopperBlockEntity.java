@@ -157,14 +157,17 @@ public class ExtraHopperBlockEntity extends RandomizableContainerBlockEntity imp
         for (int i = 0; i < hopper.getContainerSize(); ++i) {
             if (!hopper.getItem(i).isEmpty()) {
                 ItemStack source = hopper.getItem(i).copy();
-                ItemStack itemstack1 = addItem(hopper, target, hopper.removeItem(i, hopper.itemsPerUpdate.get()), direction);
+                ItemStack removed = hopper.removeItem(i, hopper.itemsPerUpdate.get());
+                ItemStack itemstack1 = addItem(hopper, target, removed, direction);
 
                 if (itemstack1.isEmpty()) {
                     target.setChanged();
                     return true;
                 }
 
-                source.setCount(itemstack1.getCount());
+                if(removed.getCount() != itemstack1.getCount()) {
+                    source.setCount(itemstack1.getCount());
+                }
 
                 hopper.setItem(i, source);
             }
