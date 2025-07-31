@@ -1,0 +1,23 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:hopper",
+        "extrahoppers:honey_hopper",
+        "extrahoppers:copper_hopper",
+        "extrahoppers:golden_hopper",
+        "extrahoppers:diamond_hopper",
+        "extrahoppers:netherite_hopper",
+        "extrahoppers:iron_hopper_plus",
+        "extrahoppers:honey_hopper_plus",
+        "extrahoppers:copper_hopper_plus",
+        "extrahoppers:golden_hopper_plus",
+        "extrahoppers:diamond_hopper_plus",
+        "extrahoppers:netherite_hopper_plus",
+        "extrahoppers:iron_hopper_plus_plus",
+        "extrahoppers:honey_hopper_plus_plus",
+        "extrahoppers:copper_hopper_plus_plus",
+        "extrahoppers:golden_hopper_plus_plus",
+        "extrahoppers:diamond_hopper_plus_plus",
+        "extrahoppers:netherite_hopper_plus_plus"
+    ]
+}

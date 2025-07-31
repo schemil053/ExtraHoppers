@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {"item": "extrahoppers:copper_hopper_plus"},
+        {"item": "minecraft:copper_block"}
+    ],
+    "result": {
+        "item": "extrahoppers:copper_hopper_plus_plus"
+    }
+}

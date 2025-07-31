@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {"item": "extrahoppers:golden_hopper"},
+        {"item": "minecraft:gold_block"}
+    ],
+    "result": {
+        "item": "extrahoppers:golden_hopper_plus"
+    }
+}

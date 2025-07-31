@@ -1,0 +1,22 @@
+{
+    "variants": {
+        "facing=down": {
+            "model": "extrahoppers:block/iron_hopper_plus"
+        },
+        "facing=east": {
+            "model": "extrahoppers:block/iron_hopper_plus_side",
+            "y": 90
+        },
+        "facing=north": {
+            "model": "extrahoppers:block/iron_hopper_plus_side"
+        },
+        "facing=south": {
+            "model": "extrahoppers:block/iron_hopper_plus_side",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "extrahoppers:block/iron_hopper_plus_side",
+            "y": 270
+        }
+    }
+}

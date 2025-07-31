@@ -1,0 +1,22 @@
+{
+    "variants": {
+        "facing=down": {
+            "model": "extrahoppers:block/diamond_hopper"
+        },
+        "facing=east": {
+            "model": "extrahoppers:block/diamond_hopper_side",
+            "y": 90
+        },
+        "facing=north": {
+            "model": "extrahoppers:block/diamond_hopper_side"
+        },
+        "facing=south": {
+            "model": "extrahoppers:block/diamond_hopper_side",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "extrahoppers:block/diamond_hopper_side",
+            "y": 270
+        }
+    }
+}
