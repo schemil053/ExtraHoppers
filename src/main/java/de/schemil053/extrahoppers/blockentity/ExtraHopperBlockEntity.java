@@ -353,27 +353,27 @@ public class ExtraHopperBlockEntity extends RandomizableContainerBlockEntity imp
     }
 
     @Nullable
-    private static Container getContainerAt(Level p_59348_, double p_59349_, double p_59350_, double p_59351_) {
+    private static Container getContainerAt(Level level, double p_59349_, double p_59350_, double p_59351_) {
         Container container = null;
         BlockPos blockpos = BlockPos.containing(p_59349_, p_59350_, p_59351_);
-        BlockState blockstate = p_59348_.getBlockState(blockpos);
+        BlockState blockstate = level.getBlockState(blockpos);
         Block block = blockstate.getBlock();
         if (block instanceof WorldlyContainerHolder) {
-            container = ((WorldlyContainerHolder) block).getContainer(blockstate, p_59348_, blockpos);
+            container = ((WorldlyContainerHolder) block).getContainer(blockstate, level, blockpos);
         } else if (blockstate.hasBlockEntity()) {
-            BlockEntity blockentity = p_59348_.getBlockEntity(blockpos);
+            BlockEntity blockentity = level.getBlockEntity(blockpos);
             if (blockentity instanceof Container) {
                 container = (Container) blockentity;
                 if (container instanceof ChestBlockEntity && block instanceof ChestBlock) {
-                    container = ChestBlock.getContainer((ChestBlock) block, blockstate, p_59348_, blockpos, true);
+                    container = ChestBlock.getContainer((ChestBlock) block, blockstate, level, blockpos, true);
                 }
             }
         }
 
         if (container == null) {
-            List<Entity> list = p_59348_.getEntities((Entity) null, new AABB(p_59349_ - 0.5D, p_59350_ - 0.5D, p_59351_ - 0.5D, p_59349_ + 0.5D, p_59350_ + 0.5D, p_59351_ + 0.5D), EntitySelector.CONTAINER_ENTITY_SELECTOR);
+            List<Entity> list = level.getEntities((Entity) null, new AABB(p_59349_ - 0.5D, p_59350_ - 0.5D, p_59351_ - 0.5D, p_59349_ + 0.5D, p_59350_ + 0.5D, p_59351_ + 0.5D), EntitySelector.CONTAINER_ENTITY_SELECTOR);
             if (!list.isEmpty()) {
-                container = (Container) list.get(p_59348_.random.nextInt(list.size()));
+                container = (Container) list.get(level.random.nextInt(list.size()));
             }
         }
 
