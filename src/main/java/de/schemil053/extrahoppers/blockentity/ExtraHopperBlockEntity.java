@@ -156,20 +156,24 @@ public class ExtraHopperBlockEntity extends RandomizableContainerBlockEntity imp
         }
         for (int i = 0; i < hopper.getContainerSize(); ++i) {
             if (!hopper.getItem(i).isEmpty()) {
-                ItemStack source = hopper.getItem(i).copy();
                 ItemStack removed = hopper.removeItem(i, hopper.itemsPerUpdate.get());
-                ItemStack itemstack1 = addItem(hopper, target, removed, direction);
+                ItemStack remaining = addItem(hopper, target, removed, direction);
 
-                if (itemstack1.isEmpty()) {
+                if (remaining.isEmpty()) {
                     target.setChanged();
                     return true;
                 }
 
-                if(removed.getCount() != itemstack1.getCount()) {
-                    source.setCount(itemstack1.getCount());
+
+                ItemStack current = hopper.getItem(i);
+
+                if (current.isEmpty()) {
+                    hopper.setItem(i, remaining);
+                } else {
+                    current.grow(remaining.getCount());
                 }
 
-                hopper.setItem(i, source);
+                hopper.setChanged();
             }
         }
 
@@ -219,14 +223,23 @@ public class ExtraHopperBlockEntity extends RandomizableContainerBlockEntity imp
     private static boolean tryTakeInItemFromSlot(ExtraHopperBlockEntity block, Container source, int slot, Direction dir) {
         ItemStack itemstack = source.getItem(slot);
         if (!itemstack.isEmpty() && canTakeItemFromContainer(block, source, itemstack, slot, dir)) {
-            ItemStack itemstack1 = itemstack.copy();
-            ItemStack itemstack2 = addItem(source, block, source.removeItem(slot, block.itemsPerUpdate.get()), null);
-            if (itemstack2.isEmpty()) {
+            ItemStack removed = source.removeItem(slot, block.itemsPerUpdate.get());
+            ItemStack remaining = addItem(source, block, removed, null);
+
+            if (remaining.isEmpty()) {
                 source.setChanged();
                 return true;
             }
 
-            source.setItem(slot, itemstack1);
+            ItemStack current = source.getItem(slot);
+
+            if (current.isEmpty()) {
+                source.setItem(slot, remaining);
+            } else {
+                current.grow(remaining.getCount());
+            }
+
+            source.setChanged();
         }
 
         return false;
